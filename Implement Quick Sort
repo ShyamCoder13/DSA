@@ -1,0 +1,62 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+         Main qs=new Main();
+         int arr[]=new int[]{38, 27, 43, 3, 9, 82, 10};
+         qs.quicksort(arr,0,arr.length-1);
+        // qs.printarr();
+	}
+    public void quicksort(int arr[], int low, int high)
+    {
+        System.out.println("start with low"+low+"end with high"+high);
+        
+        //Take Pi as partition and 
+        if(low<high)
+        {
+            int pi=partition(arr,low,high);
+            quicksort(arr,low,pi-1);
+            quicksort(arr,pi+1,high);
+        }
+    }
+    public int partition(int arr[],int low,int high)
+    {
+        int ele=arr[high];
+        int startpos=low-1;
+        for(int i=low; i<=high-1; i++){
+	
+			if(arr[i] <= ele){
+				startpos++;
+				swap(arr, i, startpos);
+			}
+
+		}		
+	
+		swap(arr, startpos+1, high);
+		printArr(arr);
+		return startpos+1;
+    }
+    public void swap(int arr[], int first, int second){
+
+		int temp = arr[first];
+		arr[first] = arr[second];
+		arr[second] = temp;
+	}
+    public void printArr(int arr[]){
+
+		for(int i=0; i<arr.length; i++){
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+
+	}
+
+}
+
+
