@@ -1,0 +1,53 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String A[]={"2", "1", "+", "3", "*"};
+
+        //Create a New Stack
+        Stack<Integer> st=new Stack<>();
+
+        int n=A.length,a,b;
+
+        for(int i=0;i<n;i++)
+        {
+            if("*/-+".contains(A[i]))
+            {
+                //Pop Last 2 Elements
+                a=st.pop();
+                b=st.pop();
+
+                if(A[i].equals("+"))
+                {
+                    st.push(b+a);
+                }
+                else if(A[i].equals("-"))
+                {
+                    st.push(b-a);
+                }
+                else if(A[i].equals("/"))
+                {
+                    st.push(b/a);
+                }
+                else
+                {
+                    st.push(b*a);
+                }
+            }
+            else
+            {
+                 st.push(Integer.parseInt(A[i]));
+            }
+        }
+
+        System.out.println(st.peek());
+
+	}
+}
+
